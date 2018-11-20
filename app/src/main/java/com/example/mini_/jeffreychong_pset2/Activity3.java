@@ -13,11 +13,9 @@ import java.io.InputStream;
 
 public class Activity3 extends AppCompatActivity {
 
-    InputStream plainStory;
-    String name;
-    Story story;
     String wordType;
     TextView explainWord;
+    Story chosenStory;
     int count;
     TextView wordCount;
     EditText inputText;
@@ -32,41 +30,15 @@ public class Activity3 extends AppCompatActivity {
 
         // making new story with the chosen text file
         Intent intent = getIntent();
-        int plainText = intent.getIntExtra("plainText", 10);
-        switch (plainText) {
-            case 1:
-                plainStory = getResources().openRawResource(R.raw.madlib0_simple);
-                name = "Simple";
-                break;
-            case 2:
-                plainStory = getResources().openRawResource(R.raw.madlib1_tarzan);
-                name = "Tarzan";
-                break;
-            case 3:
-                plainStory = getResources().openRawResource(R.raw.madlib2_university);
-                name = "University";
-                break;
-            case 4:
-                plainStory = getResources().openRawResource(R.raw.madlib3_clothes);
-                name = "Clothes";
-                break;
-            case 5:
-                plainStory = getResources().openRawResource(R.raw.madlib4_dance);
-                name = "Dance";
-                break;
-        }
-        story = new Story(plainStory);
-        Intent newStory = new Intent();
-        newStory.putExtra("newText", story);
-        startActivity(newStory);
+        chosenStory = (Story) intent.getSerializableExtra("plainText");
 
         // getting and setting the type of word
-        wordType = story.getNextPlaceholder();
+        wordType = chosenStory.getNextPlaceholder();
         explainWord = findViewById(R.id.explainWord);
         explainWord.setText(wordType);
 
         // getting and setting the amount of words that still have to be prompt
-        count = story.getPlaceholderRemainingCount();
+        count = chosenStory.getPlaceholderRemainingCount();
         wordCount = findViewById(R.id.wordCount);
         wordCount.setText(String.valueOf(count));
 
@@ -78,13 +50,13 @@ public class Activity3 extends AppCompatActivity {
     private class buttonClickListener implements Button.OnClickListener {
         // when the confirm button is clicked
         SharedPreferences.Editor editor = getSharedPreferences("settings", MODE_PRIVATE).edit();
+        Intent intent = getIntent();
+        Story chosenStory = (Story) intent.getSerializableExtra("plainText");
 
         @Override
         public void onClick(View v) {
             // saving word in shared preference
             String newWord = inputText.getText().toString();
-            Intent intent = getIntent();
-            Story plainStory = (Story) intent.getSerializableExtra("newText");
 
             if (!newWord.isEmpty()) {
                 editor.putString("word", newWord);
@@ -93,18 +65,18 @@ public class Activity3 extends AppCompatActivity {
                 // filling the input word in the placeholder
                 SharedPreferences prefs = getSharedPreferences("settings", MODE_PRIVATE);
                 String storedWord = prefs.getString("word", "false");
-                plainStory.fillInPlaceholder(storedWord);
+                chosenStory.fillInPlaceholder(storedWord);
                 inputText.getText().clear();
 
                 // give the next word type and amount of words left
-                wordType = plainStory.getNextPlaceholder();
+                wordType = chosenStory.getNextPlaceholder();
                 explainWord.setText(wordType);
                 inputText.setHint(wordType);
-                count = plainStory.getPlaceholderRemainingCount();
+                count = chosenStory.getPlaceholderRemainingCount();
                 wordCount.setText(String.valueOf(count));
 
                 // if all words are filled open next activity
-                if (plainStory.isFilledIn()) {
+                if (chosenStory.isFilledIn()) {
                     openActivity_last();
                 }
             }
@@ -114,8 +86,7 @@ public class Activity3 extends AppCompatActivity {
     // this method is prompt when all words are given by user
     public void openActivity_last() {
         Intent intent = new Intent(Activity3.this, Activity4.class);
-        intent.putExtra("fullText", plainStory.toString());
-        intent.putExtra("name", name);
+        intent.putExtra("fullText", chosenStory.toString());
         startActivity(intent);
     }
 }

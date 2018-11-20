@@ -16,6 +16,10 @@ public class Activity2 extends AppCompatActivity {
 
     private Spinner spinner;
     int storyNumber;
+    Story story;
+    InputStream plainStory;
+    String name;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +49,29 @@ public class Activity2 extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         if (storyNumber != 0) {
+                            switch (storyNumber) {
+                                case 1:
+                                    plainStory = getResources().openRawResource(R.raw.madlib0_simple);
+                                    name = "Simple";
+                                    break;
+                                case 2:
+                                    plainStory = getResources().openRawResource(R.raw.madlib1_tarzan);
+                                    name = "Tarzan";
+                                    break;
+                                case 3:
+                                    plainStory = getResources().openRawResource(R.raw.madlib2_university);
+                                    name = "University";
+                                    break;
+                                case 4:
+                                    plainStory = getResources().openRawResource(R.raw.madlib3_clothes);
+                                    name = "Clothes";
+                                    break;
+                                case 5:
+                                    plainStory = getResources().openRawResource(R.raw.madlib4_dance);
+                                    name = "Dance";
+                                    break;
+                            }
+                            story = new Story(plainStory);
                             openActivity_next();
                         }
                     }
@@ -59,7 +86,8 @@ public class Activity2 extends AppCompatActivity {
     // this method is prompt to convert the title and the user to the next activity
     public void openActivity_next() {
         Intent intent = new Intent(Activity2.this, Activity3.class);
-        intent.putExtra("plainText", storyNumber);
+        intent.putExtra("plainText", story);
+        intent.putExtra("name", name);
         startActivity(intent);
     }
 }

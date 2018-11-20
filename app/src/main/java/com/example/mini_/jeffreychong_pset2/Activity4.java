@@ -42,4 +42,10 @@ public class Activity4 extends AppCompatActivity {
         Intent intent_second = new Intent(Activity4.this, Activity2.class);
         startActivity(intent_second);
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent toHomeScreen = new Intent(this, FirstActivity.class);
+        startActivity(toHomeScreen);
+    }
 }
