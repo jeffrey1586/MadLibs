@@ -35,12 +35,12 @@ public class Activity3 extends AppCompatActivity {
         // getting and setting the type of word
         wordType = chosenStory.getNextPlaceholder();
         explainWord = findViewById(R.id.explainWord);
-        explainWord.setText(wordType);
+        explainWord.setText("Please type a/an " + wordType);
 
         // getting and setting the amount of words that still have to be prompt
         count = chosenStory.getPlaceholderRemainingCount();
         wordCount = findViewById(R.id.wordCount);
-        wordCount.setText(String.valueOf(count));
+        wordCount.setText(String.valueOf(count) + " word(s) left");
 
         // setting the word type as a hint
         inputText = findViewById(R.id.fillText);
@@ -52,6 +52,7 @@ public class Activity3 extends AppCompatActivity {
         SharedPreferences.Editor editor = getSharedPreferences("settings", MODE_PRIVATE).edit();
         Intent intent = getIntent();
         Story chosenStory = (Story) intent.getSerializableExtra("plainText");
+        String name = intent.getStringExtra("name");
 
         @Override
         public void onClick(View v) {
@@ -70,10 +71,10 @@ public class Activity3 extends AppCompatActivity {
 
                 // give the next word type and amount of words left
                 wordType = chosenStory.getNextPlaceholder();
-                explainWord.setText(wordType);
+                explainWord.setText("Please type a/an " + wordType);
                 inputText.setHint(wordType);
                 count = chosenStory.getPlaceholderRemainingCount();
-                wordCount.setText(String.valueOf(count));
+                wordCount.setText(String.valueOf(count) + " word(s) left");
 
                 // if all words are filled open next activity
                 if (chosenStory.isFilledIn()) {
@@ -85,8 +86,11 @@ public class Activity3 extends AppCompatActivity {
 
     // this method is prompt when all words are given by user
     public void openActivity_last() {
+        Intent intentName = getIntent();
+        String name = intentName.getStringExtra("name");
         Intent intent = new Intent(Activity3.this, Activity4.class);
         intent.putExtra("fullText", chosenStory.toString());
+        intent.putExtra("name", name);
         startActivity(intent);
     }
 }
