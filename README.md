@@ -8,12 +8,12 @@ Some words in the stories are kept blank.</br>
 It is up to the user to add the words. After all the words are prompt,</br>
 the app wil display the full story with the inserted words from the user.</br>
 
-Extra:</br>
+Extra:
 - a drop down menu when a story can be chosen.</br>
 - The title changes in the last activity, based on which story the user has chosen.</br>
 
-![Screenshot](doc/Screenshot_Madlibs.jpeg)
-![Screenshot](doc/Screenshot_Madlibs2.jpeg)
+![Screenshot](doc/Screenshot_MadLibs.jpeg)
+![Screenshot](doc/Screenshot_MadLibs2.jpeg)
 ![Screenshot](doc/Screenshot_Madlibs3.jpeg)
 ![Screenshot](doc/Screenshot_Madlibs4.jpeg)
 
