@@ -7,4 +7,7 @@ Android users can choose one of the 5 stories. Some words in the stories are kep
 It is up to the user to add the words. After all the words are prompt,</br>
 the app wil display the full story with the inserted words from the user.</br>
 
-![Screenshot](Screenshot_MadLibs.jpeg)
+![Screenshot](Screenshot_MadLibs.jpeg) 
+![Screenshot](Screenshot_MadLibs1.jpeg) 
+![Screenshot](Screenshot_MadLibs2.jpeg) 
+
