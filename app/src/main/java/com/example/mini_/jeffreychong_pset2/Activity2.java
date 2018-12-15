@@ -51,23 +51,28 @@ public class Activity2 extends AppCompatActivity {
                         if (storyNumber != 0) {
                             switch (storyNumber) {
                                 case 1:
-                                    plainStory = getResources().openRawResource(R.raw.madlib0_simple);
+                                    plainStory = getResources().openRawResource
+                                            (R.raw.madlib0_simple);
                                     name = "Simple";
                                     break;
                                 case 2:
-                                    plainStory = getResources().openRawResource(R.raw.madlib1_tarzan);
+                                    plainStory = getResources().openRawResource
+                                            (R.raw.madlib1_tarzan);
                                     name = "Tarzan";
                                     break;
                                 case 3:
-                                    plainStory = getResources().openRawResource(R.raw.madlib2_university);
+                                    plainStory = getResources().openRawResource
+                                            (R.raw.madlib2_university);
                                     name = "University";
                                     break;
                                 case 4:
-                                    plainStory = getResources().openRawResource(R.raw.madlib3_clothes);
+                                    plainStory = getResources().openRawResource
+                                            (R.raw.madlib3_clothes);
                                     name = "Clothes";
                                     break;
                                 case 5:
-                                    plainStory = getResources().openRawResource(R.raw.madlib4_dance);
+                                    plainStory = getResources().openRawResource
+                                            (R.raw.madlib4_dance);
                                     name = "Dance";
                                     break;
                             }
