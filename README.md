@@ -1,6 +1,6 @@
 # MadLibs
 
-Jeffery Chong, 11304669.</br>
+Jeffrey Chong, 11304669.</br>
 App Studio, week 2.</br>
 
 Android users can choose one of the 5 stories in this MadLibs app.</br>
