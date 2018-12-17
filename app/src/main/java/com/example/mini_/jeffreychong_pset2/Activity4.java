@@ -15,7 +15,7 @@ public class Activity4 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_4);
 
-        // getting the intent with the full story
+        // getting the intent with the full story and story name
         Intent intent = getIntent();
         String text = intent.getStringExtra("fullText");
         String name = intent.getStringExtra("name");
