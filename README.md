@@ -12,6 +12,8 @@ Extra:
 - a drop down menu (spinner) when a story can be chosen (second picture, Activity2.java OnCreate).</br>
 - The title changes in the last activity, based on which story the user has chosen (last picture, Activity4.java OnCreate).</br>
 
+Purpose: Course assignment basic app development in Android.</br>
+
 ![Screenshot](doc/Screenshot_MadLibs.jpeg)
 ![Screenshot](doc/Screenshot_MadLibs2.jpeg)
 ![Screenshot](doc/Screenshot_Madlibs3.jpeg)
